@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="item"
+            type="com.example.activityforresultdemo.adapter.HomeItem" />
+        <variable
+            name="listener"
+            type="com.example.activityforresultdemo.OnItemClickListener" />
+    </data>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="20dp"
+        android:text="@{item.text}"
+        android:onClick="@{() -> listener.navigateBySource(item.source, item.text)}"
+        android:textSize="25sp"/>
+</layout>
