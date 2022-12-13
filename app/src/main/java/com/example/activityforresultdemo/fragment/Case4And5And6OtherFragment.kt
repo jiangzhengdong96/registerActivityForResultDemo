@@ -15,6 +15,8 @@ class Case4And5And6OtherFragment : Fragment() {
 
     private lateinit var source: String
 
+    private var num = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         source = arguments?.getString("source") ?: "case4"
@@ -33,10 +35,20 @@ class Case4And5And6OtherFragment : Fragment() {
             when(source) {
                 "case4" -> {
                     setFragmentResult("requestKey01", bundleOf("bundleKey" to "return from Case4"))
+//                    requireActivity().supportFragmentManager.setFragmentResult("requestKey01", bundleOf("bundleKey" to "return from Case4"))
                     showToast("set fragment result successful!")
                 }
-                "case5" -> setFragmentResult("requestKey03", bundleOf("bundleKey" to "set result to case5"))
+                "case5" -> {
+                    setFragmentResult("requestKey03", bundleOf("bundleKey" to "set result to case5"))
+//                    requireActivity().supportFragmentManager.setFragmentResult("requestKey03", bundleOf("bundleKey" to "set result to case5"))
+//                    childFragmentManager.setFragmentResult("requestKey03", bundleOf("bundleKey" to "set result to case5"))
+                }
                 "case6" -> setFragmentResult("requestKey04", bundleOf())
+                "case7" -> {
+                    setFragmentResult("requestKey05", bundleOf("bundleKey" to num))
+                    showToast("$num")
+                    num++
+                }
             }
 
         }

@@ -12,9 +12,10 @@ class HomeAdapter(val listener: OnItemClickListener) : RecyclerView.Adapter<Home
         HomeItem("case1:registerActivityForResult--custom", "case1"),
         HomeItem("case2:registerActivityForResult--permission", "case2"),
         HomeItem("case3:ActivityResultRegistry + LifecycleOwner", "case3"),
-        HomeItem("case4:Fragment Result API --- support Fragment manage", "case4"),
-        HomeItem("case5:Fragment Result API --- child Fragment manage", "case5"),
-        HomeItem("case6:Fragment Result API --- Activity get result", "case6")
+        HomeItem("case4:Fragment Result API --- equal level fragments", "case4"),
+        HomeItem("case5:Fragment Result API --- parent and children fragments", "case5"),
+        HomeItem("case6:Fragment Result API --- Activity get result", "case6"),
+        HomeItem("case7:Fragment Result API --- lifecycle", "case7")
     )
 
 

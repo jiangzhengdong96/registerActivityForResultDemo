@@ -17,12 +17,19 @@ class Case3And4Fragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //相同级别的fragment可以用parentFragmentManager/supportFragmentManager
         setFragmentResultListener("requestKey01") { requestKey, bundle ->
             bundle.getString("bundleKey")?.let {
                 MyAlertDialogFragment.newInstance(it)
                     .show(parentFragmentManager, "myAlert")
             }
         }
+//        requireActivity().supportFragmentManager.setFragmentResultListener("requestKey01", this) { requestKey, bundle ->
+//            bundle.getString("bundleKey")?.let {
+//                MyAlertDialogFragment.newInstance(it)
+//                    .show(parentFragmentManager, "myAlert")
+//            }
+//        }
 
         setFragmentResultListener("requestKey02") { requestKey, bundle ->
             bundle.getString("bundleKey")?.let {

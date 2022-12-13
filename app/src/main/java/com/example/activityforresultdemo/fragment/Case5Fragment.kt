@@ -17,6 +17,11 @@ class Case5Fragment : Fragment() {
                 binding.tv1Text.text = it
             }
         }
+//        requireActivity().supportFragmentManager.setFragmentResultListener("requestKey03",this) { requestKey, bundle ->
+//            bundle.getString("bundleKey")?.let {
+//                binding.tv1Text.text = it
+//            }
+//        }
         addFragment(Case4And5And6OtherFragment.newInstance("case5"))
     }
 

@@ -23,6 +23,7 @@ class CommonActivity : AppCompatActivity() {
                     "case4" -> addFragment(Case3And4Fragment())
                     "case5" -> addFragment(Case5Fragment())
                     "case6" -> addFragment(Case4And5And6OtherFragment.newInstance("case6"))
+                    "case7" -> addFragment(Case7Fragment())
                 }
             } ?: addFragment(Case1Fragment())
         }
