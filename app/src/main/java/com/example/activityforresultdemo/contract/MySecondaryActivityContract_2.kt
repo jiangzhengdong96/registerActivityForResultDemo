@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContract
-import com.example.activityforresultdemo.SendData
 
 class MySecondaryActivityContract_2 : ActivityResultContract<Intent, Int?>() {
 

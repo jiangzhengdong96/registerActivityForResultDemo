@@ -60,7 +60,7 @@ class Case2Fragment : Fragment() {
                 handleRequestPermission()
             }
 
-            // register activity for result
+            // register for activity result
             btn2Navigate.setOnClickListener {
                 cameraPermission.launch(Manifest.permission.CAMERA)
             }

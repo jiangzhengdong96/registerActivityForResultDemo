@@ -5,23 +5,19 @@
         android:layout_width="match_parent"
         android:orientation="vertical">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn1_navigate"
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"/>
+        <TextView
+            android:id="@+id/tv_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
-            android:text="navigate(Activity Result Registry)"
-            android:padding="40dp" />
-
-        <TextView
-            android:id="@+id/tv1_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:textSize="30sp"
             android:text="empty"
-            android:textSize="50sp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"/>
+            />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>

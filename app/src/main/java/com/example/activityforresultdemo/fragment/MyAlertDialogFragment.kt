@@ -18,7 +18,7 @@ class MyAlertDialogFragment : DialogFragment() {
             setMessage("Are you ok?")
             setIcon(R.drawable.ic_launcher_foreground)
             setPositiveButton("I'm ok!") { dialogInterface, i ->
-                setFragmentResult("requestKey02", bundleOf("bundleKey" to "I'm OK！"))
+                setFragmentResult("requestKey_MyAlertDialog", bundleOf("bundleKey" to "I'm OK！"))
             }
         }.create()
     }

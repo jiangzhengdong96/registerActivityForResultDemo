@@ -4,24 +4,28 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:orientation="vertical">
-
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn1_navigate"
+            android:id="@+id/btn_send"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="send"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:text="navigate(Activity Result Registry)"
-            android:padding="40dp" />
+           android:layout_marginBottom="20dp"
+            />
+        <FrameLayout
+            android:id="@+id/fragment_container_1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+        </FrameLayout>
 
-        <TextView
-            android:id="@+id/tv1_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="empty"
-            android:textSize="50sp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"/>
+        <FrameLayout
+            android:id="@+id/fragment_container_2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+        </FrameLayout>
+
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>

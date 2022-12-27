@@ -6,13 +6,22 @@
         android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn1_navigate"
+            android:id="@+id/btn2_navigate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:text="navigate(set fragment result) "
+            android:layout_marginTop="200dp"
+            android:text="navigate(Case4: new fragment result api)"
             android:padding="40dp" />
+
+        <TextView
+            android:id="@+id/tv2_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="I'm terrible."
+            android:textSize="50sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>

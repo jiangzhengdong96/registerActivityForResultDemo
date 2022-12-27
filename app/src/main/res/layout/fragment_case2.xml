@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
-            android:text="navigate(register activity for result)"
+            android:text="navigate(register for activity result)"
             android:padding="40dp" />
 
         <ImageView

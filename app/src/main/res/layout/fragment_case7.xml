@@ -1,17 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.appcompat.widget.LinearLayoutCompat  xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_height="match_parent"
-        tools:context=".fragment.Case7Fragment">
+        android:layout_width="match_parent"
+        android:orientation="vertical">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_click"
-            android:layout_width="wrap_content"
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="40sp"
-            android:text="click"/>
+            android:orientation="horizontal">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn1_navigate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="navigate | repeat send"
+                android:padding="20dp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
-    </FrameLayout>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn2_navigate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="navigate | Close fragment"
+                android:padding="20dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn2_send"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="send"
+                android:padding="20dp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn3_navigate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="navigate | muti_observer"
+                android:padding="20dp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>

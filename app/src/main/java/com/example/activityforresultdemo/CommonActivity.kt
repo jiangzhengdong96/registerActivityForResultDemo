@@ -2,6 +2,7 @@ package com.example.activityforresultdemo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.activityforresultdemo.databinding.ActivityCommonBinding
@@ -19,8 +20,8 @@ class CommonActivity : AppCompatActivity() {
                 when(it) {
                     "case1" -> addFragment(Case1Fragment())
                     "case2" -> addFragment(Case2Fragment())
-                    "case3" -> addFragment(Case3And4Fragment())
-                    "case4" -> addFragment(Case3And4Fragment())
+                    "case3" -> addFragment(Case3Fragment())
+                    "case4" -> addFragment(Case4Fragment())
                     "case5" -> addFragment(Case5Fragment())
                     "case6" -> addFragment(Case4And5And6OtherFragment.newInstance("case6"))
                     "case7" -> addFragment(Case7Fragment())
@@ -28,7 +29,8 @@ class CommonActivity : AppCompatActivity() {
             } ?: addFragment(Case1Fragment())
         }
 
-        supportFragmentManager.setFragmentResultListener("requestKey04", this) { _, _ ->
+        supportFragmentManager.setFragmentResultListener("requestKeycase6", this) { _, _ ->
+            showToast("case6:close common activity!")
             finish()
         }
     }
@@ -38,5 +40,9 @@ class CommonActivity : AppCompatActivity() {
             .beginTransaction()
             .add(R.id.fragment_container, fragment)
             .commit()
+    }
+
+    private fun showToast(text: String) {
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
     }
 }

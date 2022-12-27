@@ -43,7 +43,4 @@ class HomeFragment : Fragment(), OnItemClickListener {
             putExtra("title", title)
         }.also { startActivity(it) }
     }
-
-    private fun isActivitySource(source: String) =
-        source == "case1" || source == "case2" || source == "case3" || source == "case4"
 }

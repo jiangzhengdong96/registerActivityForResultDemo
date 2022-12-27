@@ -12,7 +12,7 @@ class Case5Fragment : Fragment() {
     private lateinit var binding: FragmentCase5Binding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        childFragmentManager.setFragmentResultListener("requestKey03",this) { requestKey, bundle ->
+        childFragmentManager.setFragmentResultListener("requestKeycase5",this) { requestKey, bundle ->
             bundle.getString("bundleKey")?.let {
                 binding.tv1Text.text = it
             }
