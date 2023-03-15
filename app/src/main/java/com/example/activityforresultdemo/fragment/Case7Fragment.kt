@@ -37,6 +37,10 @@ class Case7Fragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+//        setFragmentResultListener("requestKeycase7_1") { requestKey, bundle ->
+//            val num =  bundle.getInt("bundleKey")
+//            Log.e("Case7：helloLog", "setFragmentresult  : $num", )
+//        }
         Log.e("Case7：helloLog", "onStart ", )
     }
 

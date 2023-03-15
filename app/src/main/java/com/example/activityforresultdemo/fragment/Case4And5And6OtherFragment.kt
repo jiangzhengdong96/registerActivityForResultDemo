@@ -52,9 +52,9 @@ class Case4And5And6OtherFragment : Fragment() {
                     showToast("set fragment result successful!")
                 }
                 "case5" -> {
-                    setFragmentResult("requestKeycase5", bundleOf("bundleKey" to "set result to case5"))
-//                    requireActivity().supportFragmentManager.setFragmentResult("requestKey03", bundleOf("bundleKey" to "set result to case5"))
-//                    childFragmentManager.setFragmentResult("requestKey03", bundleOf("bundleKey" to "set result to case5"))
+//                    setFragmentResult("requestKeycase5", bundleOf("bundleKey" to "set result to case5"))
+                    requireActivity().supportFragmentManager.setFragmentResult("requestKeycase5", bundleOf("bundleKey" to "set result to case5"))
+//                    childFragmentManager.setFragmentResult("requestKeycase5", bundleOf("bundleKey" to "set result to case5"))
                 }
                 "case6" -> setFragmentResult("requestKeycase6", bundleOf())
                 "case7_1" -> {
@@ -87,6 +87,9 @@ class Case4And5And6OtherFragment : Fragment() {
 
     override fun onStop() {
         super.onStop()
+        parentFragmentManager.setFragmentResultListener("requestCodecase7_2", this) { _, _ ->
+            Log.e("Case7_2", "case7_2:get close fragment result ", )
+        }
         Log.e("$source", "onStop ", )
     }
 

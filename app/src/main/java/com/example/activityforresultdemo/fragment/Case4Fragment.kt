@@ -23,7 +23,7 @@ class Case4Fragment : Fragment() {
                     .show(parentFragmentManager, "myAlert")
             }
         }
-//        requireActivity().supportFragmentManager.setFragmentResultListener("requestKey01", this) { requestKey, bundle ->
+//        requireActivity().supportFragmentManager.setFragmentResultListener("requestKeycase4", this) { requestKey, bundle ->
 //            bundle.getString("bundleKey")?.let {
 //                MyAlertDialogFragment.newInstance(it)
 //                    .show(parentFragmentManager, "myAlert")
