@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.activityforresultdemo.CommonActivity
 import com.example.activityforresultdemo.OnItemClickListener
-import com.example.activityforresultdemo.R
 import com.example.activityforresultdemo.adapter.HomeAdapter
 import com.example.activityforresultdemo.databinding.FragmentHomeBinding
 

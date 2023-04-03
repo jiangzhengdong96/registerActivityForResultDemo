@@ -15,25 +15,27 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.PermissionChecker
 import androidx.core.content.PermissionChecker.checkSelfPermission
-import com.example.activityforresultdemo.databinding.FragmentCase2Binding
+import com.example.activityforresultdemo.databinding.FragmentPermissionContractBinding
 
-class Case2Fragment : Fragment() {
-    private lateinit var binding: FragmentCase2Binding
+class NewActivityForResultForPermissionContractFragment : Fragment() {
+    private lateinit var binding: FragmentPermissionContractBinding
 
+    ////////////////////////start//////////////////////
+//    new api 获取照相机权限
     private val cameraPermission = registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
         when {
             granted -> {
                 cameraShot.launch(null)
             }
             else -> {
-                showToast("denied!")
+                showToast("denied or quit!")
             }
         }
     }
 
     private val cameraShot = registerForActivityResult(ActivityResultContracts.TakePicturePreview()) { bitmap ->
         if (bitmap != null) {
-            binding.iv2.setImageBitmap(bitmap)
+            binding.ivNew.setImageBitmap(bitmap)
         } else {
             showToast("something wrong!")
         }
@@ -42,13 +44,13 @@ class Case2Fragment : Fragment() {
     private fun showToast(text: String) {
         Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
     }
-    /////////////////////////////////////////////////
+    //////////////////////end//////////////////////
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding =  FragmentCase2Binding.inflate(inflater, container, false)
+        binding =  FragmentPermissionContractBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -56,27 +58,25 @@ class Case2Fragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             //start Activity for result
-            btn1Navigate.setOnClickListener {
+            btnOld.setOnClickListener {
                 handleRequestPermission()
             }
 
             // register for activity result
-            btn2Navigate.setOnClickListener {
+            btnNew.setOnClickListener {
                 cameraPermission.launch(Manifest.permission.CAMERA)
+//                cameraShot.launch(null)
             }
         }
     }
 
-    ////////////////////////////////////////////////////
-
+    ////////////////////start////////////////////////
+    //old api - 请求获取照相机权限
     private fun handleRequestPermission() {
         when {
             checkSelfPermission(requireActivity(),Manifest.permission.CAMERA) == PermissionChecker.PERMISSION_GRANTED -> {
                 // access to the camera is allowed, open the camera
-                startActivityForResult(
-                    Intent(MediaStore.ACTION_IMAGE_CAPTURE),
-                    PHOTO_REQUEST_CODE
-                )
+                goToTakePic()
             }
             else -> {
                 // access to the camera is denied, requesting permission
@@ -95,12 +95,8 @@ class Case2Fragment : Fragment() {
     ) {
         when(requestCode) {
             PHOTO_PERMISSIONS_REQUEST_CODE -> {
-                if ((grantResults.isNotEmpty() &&
-                            grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                    startActivityForResult(
-                        Intent(MediaStore.ACTION_IMAGE_CAPTURE),
-                        PHOTO_REQUEST_CODE
-                    )
+                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    goToTakePic()
                 } else {
                     return
                 }
@@ -113,15 +109,22 @@ class Case2Fragment : Fragment() {
             PHOTO_REQUEST_CODE -> {
                 if (resultCode == RESULT_OK && data != null) {
                     val bitmap = data.extras?.get("data") as Bitmap
-                    binding.iv1.setImageBitmap(bitmap)
+                    binding.ivOld.setImageBitmap(bitmap)
                 } else {
                     // failed to take photo
                 }
             }
-
             else -> super.onActivityResult(requestCode, resultCode, data)
         }
     }
+
+    private fun goToTakePic() {
+        startActivityForResult(
+            Intent(MediaStore.ACTION_IMAGE_CAPTURE),
+            PHOTO_REQUEST_CODE
+        )
+    }
+    ////////////////////end////////////////////////
 
 
     companion object {

@@ -9,8 +9,8 @@ import com.example.activityforresultdemo.databinding.ItemHomeListBinding
 class HomeAdapter(val listener: OnItemClickListener) : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
 
     private val datas = listOf<HomeItem>(
-        HomeItem("case1:registerForActivityResult--custom", "case1"),
-        HomeItem("case2:registerForActivityResult--permission", "case2"),
+        HomeItem("new activity result api 基本用法", "case1"),
+        HomeItem("contract:RequestPermission和TakePicturePreview用法", "case2"),
         HomeItem("case3:ActivityResultRegistry + LifecycleOwner", "case3"),
         HomeItem("case4:Fragment Result API --- equal level fragments", "case4"),
         HomeItem("case5:Fragment Result API --- parent and children fragments", "case5"),

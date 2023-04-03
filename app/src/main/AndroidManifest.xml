@@ -4,7 +4,7 @@
     package="com.example.activityforresultdemo">
 
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.hard" />
+<!--    <uses-permission android:name="android.hard" />-->
 
     <application
         android:allowBackup="true"

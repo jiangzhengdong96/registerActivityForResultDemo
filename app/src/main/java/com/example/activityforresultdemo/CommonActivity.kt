@@ -2,6 +2,7 @@ package com.example.activityforresultdemo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -18,15 +19,15 @@ class CommonActivity : AppCompatActivity() {
             getString("title", "title")?.let { title = it }
             getString("source", "case1")?.let {
                 when(it) {
-                    "case1" -> addFragment(Case1Fragment())
-                    "case2" -> addFragment(Case2Fragment())
+                    "case1" -> addFragment(NewActivityResultApiBasicFragment())
+                    "case2" -> addFragment(NewActivityForResultForPermissionContractFragment())
                     "case3" -> addFragment(Case3Fragment())
                     "case4" -> addFragment(Case4Fragment())
                     "case5" -> addFragment(Case5Fragment())
                     "case6" -> addFragment(Case4And5And6OtherFragment.newInstance("case6"))
                     "case7" -> addFragment(Case7Fragment())
                 }
-            } ?: addFragment(Case1Fragment())
+            } ?: addFragment(NewActivityResultApiBasicFragment())
         }
 
         supportFragmentManager.setFragmentResultListener("requestKeycase6", this) { _, _ ->

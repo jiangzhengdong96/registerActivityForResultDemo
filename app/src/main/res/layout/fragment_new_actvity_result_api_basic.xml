@@ -10,6 +10,63 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_a"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="基本用法"
+                android:padding="20dp" />
+            <TextView
+                android:id="@+id/tv_a"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="empty"
+                android:textSize="20sp"
+                android:layout_marginStart="20dp"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_getcontent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contract(GetContent)"
+                android:textAllCaps="false"
+                android:padding="20dp" />
+            <ImageView
+                android:id="@+id/iv_getcontent"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="20dp"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_pickContact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contract(pickContact)"
+                android:textAllCaps="false"
+                android:padding="20dp" />
+            <TextView
+                android:id="@+id/tv_pickContact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="empty"
+                android:textSize="20sp"
+                android:layout_marginStart="20dp"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn1_navigate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

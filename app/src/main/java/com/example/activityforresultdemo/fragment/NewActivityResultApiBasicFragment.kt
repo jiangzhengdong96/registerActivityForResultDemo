@@ -1,7 +1,11 @@
 package com.example.activityforresultdemo.fragment
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.provider.ContactsContract
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,15 +14,44 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import com.example.activityforresultdemo.contract.MySecondActivityContract
 import com.example.activityforresultdemo.contract.MySecondaryActivityContract_2
-import com.example.activityforresultdemo.databinding.FragmentCase1Binding
+import com.example.activityforresultdemo.databinding.FragmentNewActvityResultApiBasicBinding
 import com.example.activityforresultdemo.launchActivityForResult
 
-class Case1Fragment : Fragment() {
-    private lateinit var binding: FragmentCase1Binding
+class NewActivityResultApiBasicFragment : Fragment() {
+    private lateinit var binding: FragmentNewActvityResultApiBasicBinding
+
+    //基本用法
+    private val basicLauncherA = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+        it.data?.getStringExtra("my_result_key")?.let {
+            binding.tvA.text = "resultA $it"
+            Log.i("JACK","resultA: $it")
+        }
+    }
+
+    //Api提供的contract
+    // getContent()
+    private val getContentLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) {
+        binding.ivGetcontent.setImageURI(it)
+        Log.i("JACK","resultGetContent: $it")
+    }
+
+    //pickContact()
+    private val pickContactLauncher = registerForActivityResult(ActivityResultContracts.PickContact()) { uri ->
+        uri?.let {
+            binding.tvPickContact.text = getContactInfo(it)
+            Log.i("JACK","resultPickContact: ${getContactInfo(it)}")
+        }
+    }
+
+    //自定义Contract
+    private val customizeLauncher = registerForActivityResult(MySecondActivityContract()) { num: Int? ->
+        binding.tv2Text.text = "LauncherB" + num.toString()
+    }
 
     // 1/2.注册内容完全相同
     private val getLauncherA = registerForActivityResult(MySecondActivityContract()) { num: Int? ->
         binding.tv1Text.text = "LauncherA" + num.toString()
+        Log.i("JACK", "$parentFragmentManager  :  ${requireActivity().supportFragmentManager}  : ")
     }
 
     private val getLauncherB = registerForActivityResult(MySecondActivityContract()) { num: Int? ->
@@ -47,13 +80,43 @@ class Case1Fragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding =  FragmentCase1Binding.inflate(inflater, container, false)
+        binding = FragmentNewActvityResultApiBasicBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
+
+            //基本用法
+            btnA.setOnClickListener {
+                basicLauncherA.launch(
+                    Intent("android.intent.action.SECONDARY")
+                    .putExtra("my_input_key", "input:basicLauncherA")
+                )
+//                Fragments must call registerForActivityResult() before they are created (i.e. initialization, onAttach(), or onCreate()).
+//                registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+//                    it.data?.getStringExtra("my_result_key")?.let {
+//                        binding.btnA.text = "resultA $it"
+//                        Log.i("JACK", "resultA: $it")
+//                    }
+//                }.launch(
+//                    Intent("android.intent.action.SECONDARY")
+//                        .putExtra("my_input_key", "input:basicLauncherA")
+//                )
+            }
+
+            //Api提供的contract
+            // getContent()文件选择
+            btnGetcontent.setOnClickListener {
+                getContentLauncher.launch("image/*")
+            }
+
+            //pickContact() 获取联系人
+            btnPickContact.setOnClickListener {
+                pickContactLauncher.launch(null)
+            }
+
             btn1Navigate.setOnClickListener {
                 getLauncherA.launch("hello secondary page!--from launchercase1")
             }
@@ -87,6 +150,18 @@ class Case1Fragment : Fragment() {
                 }
             }
         }
+    }
+
+    @SuppressLint("Range")
+    private fun getContactInfo(uri: Uri): String {
+        var name = ""
+        context?.contentResolver?.query(uri, null, null, null, null)?.let {
+            while (it.moveToNext()) {
+                name = it.getString(it.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME))
+                break
+            }
+        }
+        return name
     }
 
 }
