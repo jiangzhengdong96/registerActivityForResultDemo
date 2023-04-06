@@ -67,13 +67,13 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn1_navigate"
+                android:id="@+id/btn_customize"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="navigate | LauncherA"
+                android:text="自定义Contract"
                 android:padding="20dp" />
             <TextView
-                android:id="@+id/tv1_text"
+                android:id="@+id/tv_customize"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="empty"
@@ -86,13 +86,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn2_navigate"
+                android:id="@+id/btn_scope_a"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="navigate | LauncherB"
+                android:text="限制条件A"
                 android:padding="20dp" />
+
             <TextView
-                android:id="@+id/tv2_text"
+                android:id="@+id/tv_scope_a"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="empty"
@@ -105,13 +106,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn3_navigate"
+                android:id="@+id/btn_scope_b"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="navigate | ActivityResultContact"
+                android:text="限制条件B"
                 android:padding="20dp" />
+
             <TextView
-                android:id="@+id/tv3_text"
+                android:id="@+id/tv_scope_b"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="empty"
@@ -124,34 +126,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn4_navigate"
+                android:id="@+id/btn_encapsulation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="navigate ｜ Lifecyc"
+                android:text="进一步封装"
                 android:padding="20dp" />
 
             <TextView
-                android:id="@+id/tv4_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="empty"
-                android:textSize="20sp"
-                android:layout_marginStart="20dp"/>
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn5_navigate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="navigate ｜ Encapsulation"
-                android:padding="20dp" />
-
-            <TextView
-                android:id="@+id/tv5_text"
+                android:id="@+id/tv_encapsulation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="empty"

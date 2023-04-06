@@ -6,12 +6,13 @@
         android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn1_navigate"
+            android:id="@+id/btn_navigate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
-            android:text="navigate(Activity Result Registry)"
+            android:text="跳转"
+            android:textAllCaps="false"
             android:padding="40dp" />
 
         <TextView

@@ -6,12 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
-import com.example.activityforresultdemo.MyLifecycleObserver
-import com.example.activityforresultdemo.databinding.FragmentCase3Binding
 import com.example.activityforresultdemo.databinding.FragmentCase4Binding
 
 
-class Case4Fragment : Fragment() {
+class FragmentResultApiBasicFragment : Fragment() {
     private lateinit var binding: FragmentCase4Binding
 
     override fun onCreate(savedInstanceState: Bundle?) {

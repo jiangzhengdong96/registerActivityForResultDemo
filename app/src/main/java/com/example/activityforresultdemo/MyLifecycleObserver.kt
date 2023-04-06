@@ -4,7 +4,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.ActivityResultRegistry
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import com.example.activityforresultdemo.contract.MySecondActivityContract
+import com.example.activityforresultdemo.contract.MyCustomizeContract
 import com.example.activityforresultdemo.databinding.FragmentCase3Binding
 
 class MyLifecycleObserver(private val registry : ActivityResultRegistry,val binding: FragmentCase3Binding)
@@ -12,7 +12,7 @@ class MyLifecycleObserver(private val registry : ActivityResultRegistry,val bind
     lateinit var getContent : ActivityResultLauncher<String>
 
     override fun onCreate(owner: LifecycleOwner) {
-        getContent = registry.register("key", owner, MySecondActivityContract()) { num ->
+        getContent = registry.register("key", owner, MyCustomizeContract()) { num ->
             binding.tv1Text.text = num.toString()
         }
     }

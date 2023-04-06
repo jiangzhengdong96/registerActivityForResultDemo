@@ -9,7 +9,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityOptionsCompat
 import androidx.fragment.app.Fragment
 
-class ActivityResultFragment : Fragment() {
+class ActivityResultEncapsulatedFragment : Fragment() {
 
     private lateinit var callback: ActivityResultCallback<ActivityResult>
     private lateinit var intent: Intent
@@ -22,7 +22,7 @@ class ActivityResultFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d(TAG, "fragment onCreate @${hashCode()}")
+        Log.d("JACK", "fragment onCreate @${hashCode()}")
         if (this::intent.isInitialized) {
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
                 callback.onActivityResult(it)
@@ -32,7 +32,7 @@ class ActivityResultFragment : Fragment() {
             val lastHasCode = savedInstanceState?.getInt(HOST_ACTIVITY_HASH_CODE) ?: 0
             val hostName = activity?.javaClass?.simpleName
             Log.e(
-                TAG,
+                "JACK",
                 "$hostName@$lastHasCode is destroy, current activity is $hostName@${activity?.hashCode()}"
             )
             removeSelf()

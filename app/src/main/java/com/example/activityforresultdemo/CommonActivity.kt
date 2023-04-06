@@ -2,7 +2,6 @@ package com.example.activityforresultdemo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -21,8 +20,8 @@ class CommonActivity : AppCompatActivity() {
                 when(it) {
                     "case1" -> addFragment(NewActivityResultApiBasicFragment())
                     "case2" -> addFragment(NewActivityForResultForPermissionContractFragment())
-                    "case3" -> addFragment(Case3Fragment())
-                    "case4" -> addFragment(Case4Fragment())
+                    "case3" -> addFragment(ActivityResultRegistryFragment())
+                    "case4" -> addFragment(FragmentResultApiBasicFragment())
                     "case5" -> addFragment(Case5Fragment())
                     "case6" -> addFragment(Case4And5And6OtherFragment.newInstance("case6"))
                     "case7" -> addFragment(Case7Fragment())

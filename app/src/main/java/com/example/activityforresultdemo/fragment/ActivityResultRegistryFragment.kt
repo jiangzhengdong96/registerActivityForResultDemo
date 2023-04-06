@@ -5,13 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.setFragmentResultListener
 import com.example.activityforresultdemo.MyLifecycleObserver
-import com.example.activityforresultdemo.databinding.FragmentCase3Binding
+import com.example.activityforresultdemo.databinding.FragmentActivityResultRegistryBinding
 
 
-class Case3Fragment : Fragment() {
-    private lateinit var binding: FragmentCase3Binding
+class ActivityResultRegistryFragment : Fragment() {
+    private lateinit var binding: FragmentActivityResultRegistryBinding
 
     lateinit var observer : MyLifecycleObserver
 
@@ -19,7 +18,7 @@ class Case3Fragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding =  FragmentCase3Binding.inflate(inflater, container, false)
+        binding =  FragmentActivityResultRegistryBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -27,7 +26,7 @@ class Case3Fragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 //        observer = MyLifecycleObserver(requireActivity().activityResultRegistry, binding)
 //        lifecycle.addObserver(observer)
-        binding.btn1Navigate.setOnClickListener {
+        binding.btnNavigate.setOnClickListener {
             observer.sendData()
         }
     }

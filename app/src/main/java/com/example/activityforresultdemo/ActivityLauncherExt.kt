@@ -7,7 +7,7 @@ import androidx.activity.result.ActivityResultCallback
 import androidx.core.app.ActivityOptionsCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import com.example.activityforresultdemo.fragment.ActivityResultFragment
+import com.example.activityforresultdemo.fragment.ActivityResultEncapsulatedFragment
 
 private const val TAG = "LaunchFragment"
 
@@ -17,7 +17,7 @@ fun FragmentActivity.launchActivityForResult(
     options: ActivityOptionsCompat? = null,
     callback: ActivityResultCallback<ActivityResult>
 ) {
-    val holder = ActivityResultFragment()
+    val holder = ActivityResultEncapsulatedFragment()
     holder.attach(intent, options, callback)
     supportFragmentManager.beginTransaction()
         .add(holder, TAG)
@@ -39,7 +39,7 @@ fun Fragment.launchActivityForResult(
     options: ActivityOptionsCompat? = null,
     callback: ActivityResultCallback<ActivityResult>
 ) {
-    val holder = ActivityResultFragment()
+    val holder = ActivityResultEncapsulatedFragment()
     holder.attach(intent, options, callback)
     activity?.supportFragmentManager?.beginTransaction()
         ?.add(holder, TAG)
