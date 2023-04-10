@@ -1,6 +1,5 @@
 package com.example.activityforresultdemo.fragment
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,20 +9,17 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
-import com.example.activityforresultdemo.CommonActivity
-import com.example.activityforresultdemo.databinding.FragmentCase4otherBinding
+import com.example.activityforresultdemo.databinding.FragmentFragmentResultApiSecondaryBinding
 
-class Case4And5And6OtherFragment : Fragment() {
-    private lateinit var binding: FragmentCase4otherBinding
-
-    private lateinit var source: String
-
+class FragmentResultApiSecondaryFragment : Fragment() {
+    private lateinit var binding: FragmentFragmentResultApiSecondaryBinding
     private var num = 0
+    private lateinit var source: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        source = arguments?.getString("source") ?: "case4"
         Log.e("$source", "oncreate ", )
+        source = arguments?.getString("source") ?: ""
 
         //case7_2:lifecycle close fragment
         parentFragmentManager.setFragmentResultListener("requestCodecase7_2", this) { _, _ ->
@@ -37,7 +33,7 @@ class Case4And5And6OtherFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         Log.e("$source", "onCreateView ", )
-        binding =  FragmentCase4otherBinding.inflate(inflater, container, false)
+        binding =  FragmentFragmentResultApiSecondaryBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -46,10 +42,10 @@ class Case4And5And6OtherFragment : Fragment() {
         if (source == "Case7_2") binding.btn1Navigate.text = CLOSE_TEXT
         binding.btn1Navigate.setOnClickListener {
             when(source) {
-                "case4" -> {
-                    setFragmentResult("requestKeycase4", bundleOf("bundleKey" to "return from Case4"))
-//                    requireActivity().supportFragmentManager.setFragmentResult("requestKey01", bundleOf("bundleKey" to "return from Case4"))
-                    showToast("set fragment result successful!")
+                "basic" -> {
+                    //基本用法
+                    setFragmentResult("key:basic", bundleOf("resultKey:basic" to "result to basic page"))
+                    showToast("set fragment result to basic successful!")
                 }
                 "case5" -> {
 //                    setFragmentResult("requestKeycase5", bundleOf("bundleKey" to "set result to case5"))
@@ -108,8 +104,8 @@ class Case4And5And6OtherFragment : Fragment() {
     }
 
     companion object{
-        fun newInstance(source: String): Case4And5And6OtherFragment =
-            Case4And5And6OtherFragment().apply {
+        fun newInstance(source: String): FragmentResultApiSecondaryFragment =
+            FragmentResultApiSecondaryFragment().apply {
                 Bundle().apply {
                     putString("source", source)
                 }.also {

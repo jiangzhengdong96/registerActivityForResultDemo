@@ -1,6 +1,7 @@
 package com.example.activityforresultdemo.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,8 +9,9 @@ import android.view.ViewGroup
 import com.example.activityforresultdemo.R
 import com.example.activityforresultdemo.databinding.FragmentCase5Binding
 
-class Case5Fragment : Fragment() {
+class ChildrenContainerFragment : Fragment() {
     private lateinit var binding: FragmentCase5Binding
+    private lateinit var childFragment: Fragment
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         childFragmentManager.setFragmentResultListener("requestKeycase5",this) { requestKey, bundle ->
@@ -22,7 +24,10 @@ class Case5Fragment : Fragment() {
 //                binding.tv1Text.text = it
 //            }
 //        }
-        addFragment(Case4And5And6OtherFragment.newInstance("case5"))
+        FragmentResultApiSecondaryFragment.newInstance("case5")?.let {
+            addFragment(it)
+            childFragment = it
+        }
     }
 
     override fun onCreateView(
@@ -37,6 +42,13 @@ class Case5Fragment : Fragment() {
         binding.btnReset.setOnClickListener {
             binding.tv1Text.text = "empty"
         }
+
+        //ParentFragmentManager、ChildFragmentManager 和Activity Host FragmentManager (supportFragmentManager) 之间的关系
+        Log.i("JACK","activity-supportFragmentManager: ${activity?.supportFragmentManager}")
+        Log.i("JACK","currentFragment-parentFragmentManager: $parentFragmentManager")
+        Log.i("JACK","currentFragment-childFragmentManager: $childFragmentManager")
+        Log.i("JACK","childFragment-parentFragmentManager: ${childFragment.parentFragmentManager}")
+        Log.i("JACK","childFragment-childFragmentManager: ${childFragment.childFragmentManager}")
     }
 
 

@@ -8,8 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.setFragmentResultListener
-import com.example.activityforresultdemo.R
-import com.example.activityforresultdemo.databinding.FragmentCase5Binding
 import com.example.activityforresultdemo.databinding.FragmentCase7Binding
 
 class Case7Fragment : Fragment() {
@@ -82,10 +80,10 @@ class Case7Fragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         Log.e("Case7：helloLog", "onViewCreated ", )
         binding.btn1Navigate.setOnClickListener {
-            replaceFragment(Case4And5And6OtherFragment.newInstance("case7_1"))
+            replaceFragment(FragmentResultApiSecondaryFragment.newInstance("case7_1"))
         }
         binding.btn2Navigate.setOnClickListener {
-            replaceFragment(Case4And5And6OtherFragment.newInstance("Case7_2"))
+            replaceFragment(FragmentResultApiSecondaryFragment.newInstance("Case7_2"))
         }
         binding.btn2Send.setOnClickListener {
             parentFragmentManager.setFragmentResult("requestCodecase7_2", Bundle())

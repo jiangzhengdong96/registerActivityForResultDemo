@@ -12,7 +12,7 @@ class HomeAdapter(val listener: OnItemClickListener) : RecyclerView.Adapter<Home
         HomeItem("new activity result api 基本用法", "case1"),
         HomeItem("contract:RequestPermission和TakePicturePreview用法", "case2"),
         HomeItem("case3:ActivityResultRegistry + LifecycleOwner", "case3"),
-        HomeItem("case4:Fragment Result API --- equal level fragments", "case4"),
+        HomeItem("fragment result api 基本用法", "case4"),
         HomeItem("case5:Fragment Result API --- parent and children fragments", "case5"),
         HomeItem("case6:Fragment Result API --- Activity get result", "case6"),
         HomeItem("case7:Fragment Result API --- lifecycle", "case7")

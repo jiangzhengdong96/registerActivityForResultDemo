@@ -22,8 +22,8 @@ class CommonActivity : AppCompatActivity() {
                     "case2" -> addFragment(NewActivityForResultForPermissionContractFragment())
                     "case3" -> addFragment(ActivityResultRegistryFragment())
                     "case4" -> addFragment(FragmentResultApiBasicFragment())
-                    "case5" -> addFragment(Case5Fragment())
-                    "case6" -> addFragment(Case4And5And6OtherFragment.newInstance("case6"))
+                    "case5" -> addFragment(ChildrenContainerFragment())
+                    "case6" -> addFragment(FragmentResultApiSecondaryFragment.newInstance("case6"))
                     "case7" -> addFragment(Case7Fragment())
                 }
             } ?: addFragment(NewActivityResultApiBasicFragment())

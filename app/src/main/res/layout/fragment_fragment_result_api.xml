@@ -6,7 +6,7 @@
         android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn2_navigate"
+            android:id="@+id/btn_navigate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -15,7 +15,7 @@
             android:padding="40dp" />
 
         <TextView
-            android:id="@+id/tv2_text"
+            android:id="@+id/tv_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="I'm terrible."
