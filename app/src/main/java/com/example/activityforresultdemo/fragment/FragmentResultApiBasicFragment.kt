@@ -15,22 +15,22 @@ class FragmentResultApiBasicFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //基本用法
-        setFragmentResultListener("key:basic") { _, bundle ->
-            bundle.getString("resultKey:basic")?.let {
-                binding.tvText.text = it
-            }
-        }
+//        //基本用法
+//        setFragmentResultListener("key:basic") { _, bundle ->
+//            bundle.getString("resultKey:basic")?.let {
+//                binding.tvText.text = it
+//            }
+//        }
 
         //相同层级的fragment可以用parentFragmentManager/supportFragmentManager
         setFragmentResultListener("key:equalLevel") { requestKey, bundle ->
-            bundle.getString("bundleKey")?.let {
+            bundle.getString("resultKey:equalLevel")?.let {
                 MyAlertDialogFragment.newInstance(it)
                     .show(parentFragmentManager, "myAlert")
             }
         }
-//        requireActivity().supportFragmentManager.setFragmentResultListener("requestKeycase4", this) { requestKey, bundle ->
-//            bundle.getString("bundleKey")?.let {
+//        requireActivity().supportFragmentManager.setFragmentResultListener("key:equalLevel", this) { requestKey, bundle ->
+//            bundle.getString("resultKey:equalLevel")?.let {
 //                MyAlertDialogFragment.newInstance(it)
 //                    .show(parentFragmentManager, "myAlert")
 //            }

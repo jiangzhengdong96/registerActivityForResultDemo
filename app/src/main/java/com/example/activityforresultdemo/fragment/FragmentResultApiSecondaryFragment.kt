@@ -18,7 +18,7 @@ class FragmentResultApiSecondaryFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.e("$source", "oncreate ", )
+
         source = arguments?.getString("source") ?: ""
 
         //case7_2:lifecycle close fragment
@@ -44,8 +44,13 @@ class FragmentResultApiSecondaryFragment : Fragment() {
             when(source) {
                 "basic" -> {
                     //基本用法
-                    setFragmentResult("key:basic", bundleOf("resultKey:basic" to "result to basic page"))
-                    showToast("set fragment result to basic successful!")
+//                    setFragmentResult("key:basic", bundleOf("resultKey:basic" to "result to basic page"))
+//                    showToast("set fragment result to basic successful!")
+
+                    //相同层级的fragment可以用parentFragmentManager/supportFragmentManager
+//                    setFragmentResult("key:equalLevel", bundleOf("resultKey:equalLevel" to "result to equal level"))
+
+                 requireActivity().supportFragmentManager.setFragmentResult("key:equalLevel", bundleOf("resultKey:equalLevel" to "result to equal level"))
                 }
                 "case5" -> {
 //                    setFragmentResult("requestKeycase5", bundleOf("bundleKey" to "set result to case5"))

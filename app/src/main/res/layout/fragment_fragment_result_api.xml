@@ -11,7 +11,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="200dp"
-            android:text="navigate(Case4: new fragment result api)"
+            android:textAllCaps="false"
+            android:text="navigate(basic)"
             android:padding="40dp" />
 
         <TextView
