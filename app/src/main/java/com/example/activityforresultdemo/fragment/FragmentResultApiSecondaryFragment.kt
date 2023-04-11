@@ -39,28 +39,33 @@ class FragmentResultApiSecondaryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         Log.e("$source", "onViewCreated ", )
-        if (source == "Case7_2") binding.btn1Navigate.text = CLOSE_TEXT
-        binding.btn1Navigate.setOnClickListener {
+        if (source == "Case7_2") binding.btnNavigate.text = CLOSE_TEXT
+        binding.btnNavigate.setOnClickListener {
             when(source) {
                 "basic" -> {
                     //基本用法
 //                    setFragmentResult("key:basic", bundleOf("resultKey:basic" to "result to basic page"))
-//                    showToast("set fragment result to basic successful!")
+                    showToast("set fragment result to basic successful!")
 
                     //相同层级的fragment可以用parentFragmentManager/supportFragmentManager
 //                    setFragmentResult("key:equalLevel", bundleOf("resultKey:equalLevel" to "result to equal level"))
 
                  requireActivity().supportFragmentManager.setFragmentResult("key:equalLevel", bundleOf("resultKey:equalLevel" to "result to equal level"))
+                 Log.i("JACK", "equalLevel：supportFragmentManager: ${requireActivity().supportFragmentManager}/${requireActivity().supportFragmentManager.fragments}")
+                 Log.i("JACK", "equalLevel：parentFragmentManager: ${parentFragmentManager}/${parentFragmentManager.fragments}")
                 }
-                "case5" -> {
-//                    setFragmentResult("requestKeycase5", bundleOf("bundleKey" to "set result to case5"))
-                    requireActivity().supportFragmentManager.setFragmentResult("requestKeycase5", bundleOf("bundleKey" to "set result to case5"))
-//                    childFragmentManager.setFragmentResult("requestKeycase5", bundleOf("bundleKey" to "set result to case5"))
+                "contain" -> {
+                    //1、接收方使用childFragmentManager， 发送方使用parentFragmentManager
+                    setFragmentResult("request:containLevel", bundleOf("result:containLevel" to "result to contain level"))
+                    //2、接收方用supportFragmentManager/parentFragmentManager,发送方用supportFragmentManager
+//                    requireActivity().supportFragmentManager.setFragmentResult("request:containLevel", bundleOf("result:containLevel" to "result to contain level"))
+
+//                  childFragmentManager.setFragmentResult("request:containLevel", bundleOf("result:containLevel" to "result to contain level"))
                 }
-                "case6" -> setFragmentResult("requestKeycase6", bundleOf())
-                "case7_1" -> {
-                    setFragmentResult("requestKeycase7_1", bundleOf("bundleKey" to num))
-                    binding.btn1Navigate.text = String.format(NAVIGATE_TEXT, num)
+                "acticity with fragment" -> setFragmentResult("request:activity", bundleOf())
+                "repeat send" -> {
+                    setFragmentResult("request:repeat send", bundleOf("result:repeat send" to num))
+                    binding.btnNavigate.text = String.format(NAVIGATE_TEXT, num)
                     num++
                 }
                 "Case7_2" -> {

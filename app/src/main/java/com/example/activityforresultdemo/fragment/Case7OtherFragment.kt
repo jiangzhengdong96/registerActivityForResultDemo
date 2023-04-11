@@ -9,10 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
-import androidx.fragment.app.setFragmentResultListener
-import com.example.activityforresultdemo.R
-import com.example.activityforresultdemo.databinding.FragmentCase5Binding
-import com.example.activityforresultdemo.databinding.FragmentCase7Binding
 import com.example.activityforresultdemo.databinding.FragmentCase7otherBinding
 
 class Case7OtherFragment : Fragment() {

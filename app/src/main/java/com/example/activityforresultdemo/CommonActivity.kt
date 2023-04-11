@@ -2,6 +2,7 @@ package com.example.activityforresultdemo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -23,14 +24,16 @@ class CommonActivity : AppCompatActivity() {
                     "case3" -> addFragment(ActivityResultRegistryFragment())
                     "case4" -> addFragment(FragmentResultApiBasicFragment())
                     "case5" -> addFragment(ChildrenContainerFragment())
-                    "case6" -> addFragment(FragmentResultApiSecondaryFragment.newInstance("case6"))
-                    "case7" -> addFragment(Case7Fragment())
+                    "case6" -> addFragment(FragmentResultApiSecondaryFragment.newInstance("acticity with fragment"))
+                    "case7" -> addFragment(FragmentResultApiLifecycFragment())
                 }
             } ?: addFragment(NewActivityResultApiBasicFragment())
         }
 
-        supportFragmentManager.setFragmentResultListener("requestKeycase6", this) { _, _ ->
-            showToast("case6:close common activity!")
+        //在宿主activity中接收结果
+        supportFragmentManager.setFragmentResultListener("request:activity", this) { _, _ ->
+            showToast("receive result at host activity:close common activity!")
+            Log.i("JACK", "host activity：backResult: receive result at host activity:close common activity!")
             finish()
         }
     }

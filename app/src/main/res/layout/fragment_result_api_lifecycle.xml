@@ -10,10 +10,10 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn1_navigate"
+                android:id="@+id/btn_repeat_send"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="navigate | repeat send"
+                android:text="重复发送"
                 android:padding="20dp" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 

@@ -13,9 +13,9 @@ class HomeAdapter(val listener: OnItemClickListener) : RecyclerView.Adapter<Home
         HomeItem("contract:RequestPermission和TakePicturePreview用法", "case2"),
         HomeItem("case3:ActivityResultRegistry + LifecycleOwner", "case3"),
         HomeItem("fragment result api 基本用法", "case4"),
-        HomeItem("case5:Fragment Result API --- parent and children fragments", "case5"),
-        HomeItem("case6:Fragment Result API --- Activity get result", "case6"),
-        HomeItem("case7:Fragment Result API --- lifecycle", "case7")
+        HomeItem("fragment包含另一个子fragment的情况", "case5"),
+        HomeItem("在宿主activity中接收结果", "case6"),
+        HomeItem("fragment result api生命周期的细微差别", "case7")
     )
 
 

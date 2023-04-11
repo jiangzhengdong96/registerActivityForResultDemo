@@ -1,6 +1,7 @@
 package com.example.activityforresultdemo.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,24 +24,21 @@ class FragmentResultApiBasicFragment : Fragment() {
 //        }
 
         //相同层级的fragment可以用parentFragmentManager/supportFragmentManager
-        setFragmentResultListener("key:equalLevel") { requestKey, bundle ->
-            bundle.getString("resultKey:equalLevel")?.let {
-                MyAlertDialogFragment.newInstance(it)
-                    .show(parentFragmentManager, "myAlert")
-            }
-        }
-//        requireActivity().supportFragmentManager.setFragmentResultListener("key:equalLevel", this) { requestKey, bundle ->
+//        setFragmentResultListener("key:equalLevel") { requestKey, bundle ->
 //            bundle.getString("resultKey:equalLevel")?.let {
-//                MyAlertDialogFragment.newInstance(it)
-//                    .show(parentFragmentManager, "myAlert")
+//                binding.tvText.text = it
+//        Log.i("JACK", "equalLevel：backResult: $it")
 //            }
 //        }
-
-        setFragmentResultListener("requestKey_MyAlertDialog") { requestKey, bundle ->
-            bundle.getString("bundleKey")?.let {
+        requireActivity().supportFragmentManager.setFragmentResultListener("key:equalLevel", this) { requestKey, bundle ->
+            bundle.getString("resultKey:equalLevel")?.let {
                 binding.tvText.text = it
+                Log.i("JACK", "equalLevel：backResult: $it")
             }
         }
+
+        Log.i("JACK", "equalLevel：supportFragmentManager: ${requireActivity().supportFragmentManager}/${requireActivity().supportFragmentManager.fragments}")
+        Log.i("JACK", "equalLevel：parentFragmentManager: ${parentFragmentManager}/${parentFragmentManager.fragments}")
     }
 
     override fun onCreateView(

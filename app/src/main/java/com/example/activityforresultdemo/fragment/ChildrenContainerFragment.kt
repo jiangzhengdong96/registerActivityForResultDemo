@@ -7,24 +7,33 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.activityforresultdemo.R
-import com.example.activityforresultdemo.databinding.FragmentCase5Binding
+import com.example.activityforresultdemo.databinding.FragmentChildContainerBinding
 
 class ChildrenContainerFragment : Fragment() {
-    private lateinit var binding: FragmentCase5Binding
+    private lateinit var binding: FragmentChildContainerBinding
     private lateinit var childFragment: Fragment
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        childFragmentManager.setFragmentResultListener("requestKeycase5",this) { requestKey, bundle ->
-            bundle.getString("bundleKey")?.let {
-                binding.tv1Text.text = it
-            }
-        }
-//        requireActivity().supportFragmentManager.setFragmentResultListener("requestKeycase5",this) { requestKey, bundle ->
-//            bundle.getString("bundleKey")?.let {
-//                binding.tv1Text.text = it
+
+        //Fragment中包含另一个fragment的之间进行数据传输
+        //1、接收方使用childFragmentManager， 发送方使用parentFragmentManager
+//        childFragmentManager.setFragmentResultListener("request:containLevel",this) { requestKey, bundle ->
+//            bundle.getString("result:containLevel")?.let {
+//                binding.tvText.text = it
+//                Log.i("JACK", "containLevel：backResult: $it")
 //            }
 //        }
-        FragmentResultApiSecondaryFragment.newInstance("case5")?.let {
+
+        //2、接收方用supportFragmentManager/parentFragmentManager,发送方用supportFragmentManager
+//        requireActivity().supportFragmentManager.setFragmentResultListener("request:containLevel",this) { requestKey, bundle ->
+//            bundle.getString("result:containLevel")?.let {
+//                binding.tvText.text = it
+//        Log.i("JACK", "containLevel：backResult: $it")
+//            }
+//        }
+
+
+        FragmentResultApiSecondaryFragment.newInstance("contain")?.let {
             addFragment(it)
             childFragment = it
         }
@@ -34,13 +43,13 @@ class ChildrenContainerFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding =  FragmentCase5Binding.inflate(inflater, container, false)
+        binding =  FragmentChildContainerBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.btnReset.setOnClickListener {
-            binding.tv1Text.text = "empty"
+            binding.tvText.text = "empty"
         }
 
         //ParentFragmentManager、ChildFragmentManager 和Activity Host FragmentManager (supportFragmentManager) 之间的关系
@@ -48,7 +57,6 @@ class ChildrenContainerFragment : Fragment() {
         Log.i("JACK","currentFragment-parentFragmentManager: $parentFragmentManager")
         Log.i("JACK","currentFragment-childFragmentManager: $childFragmentManager")
         Log.i("JACK","childFragment-parentFragmentManager: ${childFragment.parentFragmentManager}")
-        Log.i("JACK","childFragment-childFragmentManager: ${childFragment.childFragmentManager}")
     }
 
 

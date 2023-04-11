@@ -8,79 +8,75 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.setFragmentResultListener
-import com.example.activityforresultdemo.databinding.FragmentCase7Binding
+import com.example.activityforresultdemo.databinding.FragmentResultApiLifecycleBinding
 
-class Case7Fragment : Fragment() {
-    private lateinit var binding: FragmentCase7Binding
+class FragmentResultApiLifecycFragment : Fragment() {
+    private lateinit var binding: FragmentResultApiLifecycleBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.e("Case7：helloLog", "oncreate ", )
+        Log.e("JACK", "FragmentResultApiLifecycFragment-oncreate ", )
 
-        // repeat send
-        setFragmentResultListener("requestKeycase7_1") { requestKey, bundle ->
-            val num =  bundle.getInt("bundleKey")
-            Log.e("Case7：helloLog", "setFragmentresult  : $num", )
+        // 重复接收到多个结果只会接收到最新的
+        setFragmentResultListener("request:repeat send") { requestKey, bundle ->
+            val num =  bundle.getInt("result:repeat send")
+            Log.e("JACK", "repeat send result: $num", )
         }
 
         // close fragment
         setFragmentResultListener("requestKeycase7_2") { requestKey, bundle ->
-            Log.e("Case7：helloLog", "setFragmentresult  : close fragment", )
+            Log.e("JACK", "setFragmentresult  : close fragment", )
         }
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        Log.e("Case7：helloLog", "onAttach ", )
+        Log.e("JACK", "FragmentResultApiLifecycFragment-onAttach ", )
     }
 
     override fun onStart() {
         super.onStart()
-//        setFragmentResultListener("requestKeycase7_1") { requestKey, bundle ->
-//            val num =  bundle.getInt("bundleKey")
-//            Log.e("Case7：helloLog", "setFragmentresult  : $num", )
-//        }
-        Log.e("Case7：helloLog", "onStart ", )
+        Log.e("JACK", "FragmentResultApiLifecycFragment-onStart ", )
     }
 
     override fun onResume() {
         super.onResume()
-        Log.e("Case7：helloLog", "onResume ", )
+        Log.e("JACK", "FragmentResultApiLifecycFragment-onResume ", )
     }
 
     override fun onPause() {
         super.onPause()
-        Log.e("Case7：helloLog", "onPause ", )
+        Log.e("JACK", "FragmentResultApiLifecycFragment-onPause ", )
     }
 
     override fun onStop() {
         super.onStop()
-        Log.e("Case7：helloLog", "onStop ", )
+        Log.e("JACK", "FragmentResultApiLifecycFragment-onStop ", )
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        Log.e("Case7：helloLog", "onDestoryView ", )
+        Log.e("JACK", "FragmentResultApiLifecycFragment-onDestoryView ", )
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.e("Case7：helloLog", "onDestory ", )
+        Log.e("JACK", "FragmentResultApiLifecycFragment-onDestory ", )
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        Log.e("Case7：helloLog", "onCreateView ", )
-        binding =  FragmentCase7Binding.inflate(inflater, container, false)
+        Log.e("JACK", "FragmentResultApiLifecycFragment-onCreateView ", )
+        binding =  FragmentResultApiLifecycleBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.e("Case7：helloLog", "onViewCreated ", )
-        binding.btn1Navigate.setOnClickListener {
-            replaceFragment(FragmentResultApiSecondaryFragment.newInstance("case7_1"))
+        Log.e("JACK", "FragmentResultApiLifecycFragment-onViewCreated ", )
+        binding.btnRepeatSend.setOnClickListener {
+            replaceFragment(FragmentResultApiSecondaryFragment.newInstance("repeat send"))
         }
         binding.btn2Navigate.setOnClickListener {
             replaceFragment(FragmentResultApiSecondaryFragment.newInstance("Case7_2"))
