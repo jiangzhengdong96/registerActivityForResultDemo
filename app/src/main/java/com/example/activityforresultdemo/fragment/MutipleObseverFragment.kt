@@ -1,18 +1,16 @@
 package com.example.activityforresultdemo.fragment
 
-import android.content.Context
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
-import com.example.activityforresultdemo.databinding.FragmentCase7otherBinding
+import com.example.activityforresultdemo.databinding.FragmentMutipleObseverBinding
 
-class Case7OtherFragment : Fragment() {
-    private lateinit var binding: FragmentCase7otherBinding
+class MutipleObseverFragment : Fragment() {
+    private lateinit var binding: FragmentMutipleObseverBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -21,26 +19,26 @@ class Case7OtherFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding =  FragmentCase7otherBinding.inflate(inflater, container, false)
+        binding =  FragmentMutipleObseverBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        addFragment1(Case7_3_1Fragment())
+//        addFragment1(ObseverAFragment())
 //
 //        Handler().postDelayed({
-//            addFragment2(Case7_3_2Fragment())
+//            addFragment2(ObseverBFragment())
 //        }, 200)
 
-        addFragment2(Case7_3_2Fragment())
+        addFragment2(ObseverBFragment())
 
         Handler().postDelayed({
-            addFragment1(Case7_3_1Fragment())
+            addFragment1(ObseverAFragment())
         }, 200)
 
         binding.btnSend.setOnClickListener {
-            childFragmentManager.setFragmentResult("requestKeycase7_3", bundleOf("bundleKey" to "you get the result"))
+            childFragmentManager.setFragmentResult("requestKeyMutiple", bundleOf("bundleKey" to "you get the result"))
         }
     }
 

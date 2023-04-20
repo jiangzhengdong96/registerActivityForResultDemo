@@ -21,9 +21,9 @@ class FragmentResultApiSecondaryFragment : Fragment() {
 
         source = arguments?.getString("source") ?: ""
 
-        //case7_2:lifecycle close fragment
-        parentFragmentManager.setFragmentResultListener("requestCodecase7_2", this) { _, _ ->
-            Log.e("Case7_2", "case7_2:get close fragment result ", )
+        //关闭又打开
+        parentFragmentManager.setFragmentResultListener("requestSentMessage", this) { _, _ ->
+            Log.e("JACK", "result: get sent message", )
         }
 
     }
@@ -67,9 +67,6 @@ class FragmentResultApiSecondaryFragment : Fragment() {
                     setFragmentResult("request:repeat send", bundleOf("result:repeat send" to num))
                     binding.btnNavigate.text = String.format(NAVIGATE_TEXT, num)
                     num++
-                }
-                "Case7_2" -> {
-                    parentFragmentManager.popBackStack()
                 }
             }
 

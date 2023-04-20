@@ -1,22 +1,19 @@
 package com.example.activityforresultdemo.fragment
 
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import com.example.activityforresultdemo.databinding.FragmentCase732Binding
+import com.example.activityforresultdemo.databinding.FragmentObseverABinding
 
-class Case7_3_2Fragment : Fragment() {
-    private lateinit var binding: FragmentCase732Binding
+class ObseverAFragment : Fragment() {
+    private lateinit var binding: FragmentObseverABinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        parentFragmentManager.setFragmentResultListener("requestKeycase7_3", this) { requestkey, bundle ->
+        parentFragmentManager.setFragmentResultListener("requestKeyMutiple", this) { requestkey, bundle ->
             bundle.getString("bundleKey")?.let {
                 binding.tvContent.text = it
             }
@@ -27,7 +24,7 @@ class Case7_3_2Fragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding =  FragmentCase732Binding.inflate(inflater, container, false)
+        binding =  FragmentObseverABinding.inflate(inflater, container, false)
         return binding.root
     }
 }

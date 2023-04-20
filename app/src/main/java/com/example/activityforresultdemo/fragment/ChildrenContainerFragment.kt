@@ -17,12 +17,12 @@ class ChildrenContainerFragment : Fragment() {
 
         //Fragment中包含另一个fragment的之间进行数据传输
         //1、接收方使用childFragmentManager， 发送方使用parentFragmentManager
-//        childFragmentManager.setFragmentResultListener("request:containLevel",this) { requestKey, bundle ->
-//            bundle.getString("result:containLevel")?.let {
-//                binding.tvText.text = it
-//                Log.i("JACK", "containLevel：backResult: $it")
-//            }
-//        }
+        childFragmentManager.setFragmentResultListener("request:containLevel",this) { requestKey, bundle ->
+            bundle.getString("result:containLevel")?.let {
+                binding.tvText.text = it
+                Log.i("JACK", "containLevel：backResult: $it")
+            }
+        }
 
         //2、接收方用supportFragmentManager/parentFragmentManager,发送方用supportFragmentManager
 //        requireActivity().supportFragmentManager.setFragmentResultListener("request:containLevel",this) { requestKey, bundle ->

@@ -8,10 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.setFragmentResultListener
+import com.example.activityforresultdemo.R
 import com.example.activityforresultdemo.databinding.FragmentResultApiLifecycleBinding
 
 class FragmentResultApiLifecycFragment : Fragment() {
     private lateinit var binding: FragmentResultApiLifecycleBinding
+    private var childFragment: Fragment? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.e("JACK", "FragmentResultApiLifecycFragment-oncreate ", )
@@ -75,17 +77,33 @@ class FragmentResultApiLifecycFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.e("JACK", "FragmentResultApiLifecycFragment-onViewCreated ", )
+        //重复发消息
         binding.btnRepeatSend.setOnClickListener {
             replaceFragment(FragmentResultApiSecondaryFragment.newInstance("repeat send"))
         }
-        binding.btn2Navigate.setOnClickListener {
-            replaceFragment(FragmentResultApiSecondaryFragment.newInstance("Case7_2"))
+
+        //关闭又打开
+        binding.btnClose.setOnClickListener {
+            if (childFragment != null) {
+                childFragment = null
+                childFragmentManager.popBackStack()
+            }
         }
-        binding.btn2Send.setOnClickListener {
-            parentFragmentManager.setFragmentResult("requestCodecase7_2", Bundle())
+        binding.btnOpen.setOnClickListener {
+            if (childFragment != null) return@setOnClickListener
+            FragmentResultApiSecondaryFragment.newInstance("add_contain")?.let {
+                addFragment(it)
+                childFragment = it
+            }
         }
-        binding.btn3Navigate.setOnClickListener {
-            replaceFragment(Case7OtherFragment())
+        binding.btnSend.setOnClickListener {
+            childFragmentManager.setFragmentResult("requestSentMessage", Bundle())
+        }
+
+
+
+        binding.btnMutiple.setOnClickListener {
+            replaceFragment(MutipleObseverFragment())
         }
 
     }
@@ -102,6 +120,13 @@ class FragmentResultApiLifecycFragment : Fragment() {
         parentFragmentManager
             .beginTransaction()
             .replace(com.example.activityforresultdemo.R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
+    }
+
+    private fun addFragment(fragment: Fragment) {
+        childFragmentManager.beginTransaction()
+            .add(R.id.fl_child, fragment)
             .addToBackStack(null)
             .commit()
     }
