@@ -16,4 +16,9 @@ class MyCustomizeContract : ActivityResultContract<String, String?>() {
         resultCode != Activity.RESULT_OK -> null
         else -> intent?.getStringExtra("my_result_key")
     }
+
+    override fun getSynchronousResult(
+        context: Context,
+        input: String
+    ): SynchronousResult<String?>? = null
 }

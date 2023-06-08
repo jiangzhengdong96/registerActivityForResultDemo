@@ -14,7 +14,7 @@ class MyLifecycleObserver(private val registry : ActivityResultRegistry,val bind
 
     override fun onCreate(owner: LifecycleOwner) {
         getContent = registry.register("key", owner, MyCustomizeContract()) { num ->
-            binding.tvText.text = num.toString()
+            binding.tvTextTest.text = num.toString()
         }
     }
 

@@ -15,27 +15,26 @@ class FragmentResultApiBasicFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //基本用法JJACK06
+        setFragmentResultListener("key:basic") { _, bundle ->
+            bundle.getString("resultKey:basic")?.let {
+                binding.tvTextTest.text = it
+            }
+        }
 
-//        //基本用法
-//        setFragmentResultListener("key:basic") { _, bundle ->
-//            bundle.getString("resultKey:basic")?.let {
-//                binding.tvText.text = it
-//            }
-//        }
-
-        //相同层级的fragment可以用parentFragmentManager/supportFragmentManager
+//        相同层级的fragment可以用parentFragmentManager/supportFragmentManager
 //        setFragmentResultListener("key:equalLevel") { requestKey, bundle ->
 //            bundle.getString("resultKey:equalLevel")?.let {
 //                binding.tvText.text = it
-//        Log.i("JACK", "equalLevel：backResult: $it")
+//                Log.i("JACK", "equalLevel：backResult: $it")
 //            }
 //        }
-        requireActivity().supportFragmentManager.setFragmentResultListener("key:equalLevel", this) { requestKey, bundle ->
-            bundle.getString("resultKey:equalLevel")?.let {
-                binding.tvText.text = it
-                Log.i("JACK", "equalLevel：backResult: $it")
-            }
-        }
+//        requireActivity().supportFragmentManager.setFragmentResultListener("key:equalLevel", this) { requestKey, bundle ->
+//            bundle.getString("resultKey:equalLevel")?.let {
+//                binding.tvText.text = it
+//                Log.i("JACK", "equalLevel：backResult: $it")
+//            }
+//        }
 
         Log.i("JACK", "equalLevel：supportFragmentManager: ${requireActivity().supportFragmentManager}/${requireActivity().supportFragmentManager.fragments}")
         Log.i("JACK", "equalLevel：parentFragmentManager: ${parentFragmentManager}/${parentFragmentManager.fragments}")

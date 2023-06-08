@@ -20,16 +20,17 @@ import com.example.activityforresultdemo.launchActivityForResult
 class NewActivityResultApiBasicFragment : Fragment() {
     private lateinit var binding: FragmentNewActvityResultApiBasicBinding
 
-    //基本用法
+    //基本用法JJACK01
     private val basicLauncherA = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-        it.data?.getStringExtra("my_result_key")?.let {
-            binding.tvA.text = "resultA $it"
-            Log.i("JACK","resultA: $it")
+        it.data?.getStringExtra("my_result_key")?.let { resultData ->
+            binding.tvA.text = "resultA $resultData"
+            Log.i("JACK","resultA: $resultData")
         }
     }
 
-    //Api提供的contract
+    //Api提供的contractJJACK02
     // getContent()
+    //return 统一资源识别符
     private val getContentLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) {
         binding.ivGetcontent.setImageURI(it)
         Log.i("JACK","resultGetContent: $it")
@@ -43,31 +44,31 @@ class NewActivityResultApiBasicFragment : Fragment() {
         }
     }
 
-    //自定义Contract
+    //自定义ContractJJACK03
     private val customizeLauncher = registerForActivityResult(MyCustomizeContract()) { result ->
         binding.tvCustomize.text = "customizeResult: $result"
         Log.i("JACK","customizeResult: $result")
     }
 
-    //注意事项
+    //注意事项!!!!JJACK04
     //限制条件：registerForActivityResult()的调用范围
-    private lateinit var getLazyLauncherA: ActivityResultLauncher<String>
+    private lateinit var getLimitLauncherA: ActivityResultLauncher<String>
 
 //    launch()的调用范围
-    private val getLazyLauncherB: ActivityResultLauncher<String> =
+    private val getLimitLauncherB: ActivityResultLauncher<String> =
         registerForActivityResult(ActivityResultContracts.GetContent()) {
             binding.tvScopeB.text = it?.toString()
-            Log.i("JACK","lazyResult: $it")
+            Log.i("JACK","LimitResultB: $it")
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         //registerForActivityResult()的调用范围
-//        getLazyLauncherA = registerForActivityResult(ActivityResultContracts.GetContent()) {
-//            binding.tvScopeA.text = it?.toString()
-//            Log.i("JACK","lazyResult: $it")
-//        }
+        getLimitLauncherA = registerForActivityResult(ActivityResultContracts.GetContent()) {
+            binding.tvScopeA.text = it?.toString()
+            Log.i("JACK","LimitResultA: $it")
+        }
     }
 
     override fun onCreateView(
@@ -108,24 +109,12 @@ class NewActivityResultApiBasicFragment : Fragment() {
 
             //registerForActivityResult()的调用范围
             btnScopeA.setOnClickListener {
-                getLazyLauncherA.launch("image/*")
+                getLimitLauncherA.launch("image/*")
             }
 
             //launch()的调用范围
             btnScopeB.setOnClickListener {
-                getLazyLauncherB.launch("image/*")
-            }
-
-            //进一步封装
-            btnEncapsulation.setOnClickListener {
-                val intent = Intent("android.intent.action.SECONDARY")
-                    .putExtra("my_input_key", "input:encapsulated")
-                launchActivityForResult(intent) {
-                    it.data?.getStringExtra("my_result_key")?.let { result ->
-                        binding.tvEncapsulation.text = result
-                        Log.i("JACK","encapsulatedResult: $result")
-                    }
-                }
+                getLimitLauncherB.launch("image/*")
             }
         }
     }
@@ -133,10 +122,22 @@ class NewActivityResultApiBasicFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         //registerForActivityResult()的调用范围/ // 调用 registerForActivityResult 方法时只能在OnStart生命周期前调用，否则会报错  ---
-//        getLazyLauncherA = registerForActivityResult(ActivityResultContracts.GetContent()) {
+//        getLimitLauncherA = registerForActivityResult(ActivityResultContracts.GetContent()) {
 //            binding.tvScopeA.text = it?.toString()
-//            Log.i("JACK","lazyResult: $it")
+//            Log.i("JACK","LimitResultA: $it")
 //        }
+
+        //进一步封装JJACK05
+        binding.btnEncapsulation.setOnClickListener {
+            val intent = Intent("android.intent.action.SECONDARY")
+                .putExtra("my_input_key", "input:encapsulated")
+            launchActivityForResult(intent) {
+                it.data?.getStringExtra("my_result_key")?.let { result ->
+                    binding.tvEncapsulation.text = result
+                    Log.i("JACK","encapsulatedResult: $result")
+                }
+            }
+        }
     }
 
     @SuppressLint("Range")
@@ -150,5 +151,4 @@ class NewActivityResultApiBasicFragment : Fragment() {
         }
         return name
     }
-
 }

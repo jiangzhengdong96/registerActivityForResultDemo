@@ -19,6 +19,7 @@ class SecondaryActivity: AppCompatActivity() {
             binding.tvContent.text = it
             Log.i("JACK", it)
         }
+        //  JJACK03 && JJACK01 && JJACK05
         binding.btnClose.setOnClickListener {
             val resultIntent = intent.apply {
                 putExtra("my_result_key", "callback result for: $source")

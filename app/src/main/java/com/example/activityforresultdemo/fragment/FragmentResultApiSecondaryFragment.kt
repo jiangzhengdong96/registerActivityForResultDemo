@@ -39,12 +39,12 @@ class FragmentResultApiSecondaryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         Log.e("$source", "onViewCreated ", )
-        if (source == "Case7_2") binding.btnNavigate.text = CLOSE_TEXT
-        binding.btnNavigate.setOnClickListener {
+        if (source == "Case7_2") binding.btnNavigateTest.text = CLOSE_TEXT
+        binding.btnNavigateTest.setOnClickListener {
             when(source) {
                 "basic" -> {
-                    //基本用法
-//                    setFragmentResult("key:basic", bundleOf("resultKey:basic" to "result to basic page"))
+                    //基本用法JJACK06
+                    setFragmentResult("key:basic", bundleOf("resultKey:basic" to "result to basic page"))
                     showToast("set fragment result to basic successful!")
 
                     //相同层级的fragment可以用parentFragmentManager/supportFragmentManager
@@ -65,7 +65,7 @@ class FragmentResultApiSecondaryFragment : Fragment() {
                 "acticity with fragment" -> setFragmentResult("request:activity", bundleOf())
                 "repeat send" -> {
                     setFragmentResult("request:repeat send", bundleOf("result:repeat send" to num))
-                    binding.btnNavigate.text = String.format(NAVIGATE_TEXT, num)
+                    binding.btnNavigateTest.text = String.format(NAVIGATE_TEXT, num)
                     num++
                 }
             }

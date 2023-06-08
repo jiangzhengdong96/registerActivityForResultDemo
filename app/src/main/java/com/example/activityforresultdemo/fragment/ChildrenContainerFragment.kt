@@ -19,7 +19,7 @@ class ChildrenContainerFragment : Fragment() {
         //1、接收方使用childFragmentManager， 发送方使用parentFragmentManager
         childFragmentManager.setFragmentResultListener("request:containLevel",this) { requestKey, bundle ->
             bundle.getString("result:containLevel")?.let {
-                binding.tvText.text = it
+                binding.tvTextTest.text = it
                 Log.i("JACK", "containLevel：backResult: $it")
             }
         }
@@ -49,7 +49,7 @@ class ChildrenContainerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.btnReset.setOnClickListener {
-            binding.tvText.text = "empty"
+            binding.tvTextTest.text = "empty"
         }
 
         //ParentFragmentManager、ChildFragmentManager 和Activity Host FragmentManager (supportFragmentManager) 之间的关系

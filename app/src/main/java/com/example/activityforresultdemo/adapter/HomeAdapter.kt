@@ -11,7 +11,6 @@ class HomeAdapter(val listener: OnItemClickListener) : RecyclerView.Adapter<Home
     private val datas = listOf<HomeItem>(
         HomeItem("new activity result api 基本用法", "case1"),
         HomeItem("contract:RequestPermission和TakePicturePreview用法", "case2"),
-        HomeItem("case3:ActivityResultRegistry + LifecycleOwner", "case3"),
         HomeItem("fragment result api 基本用法", "case4"),
         HomeItem("fragment包含另一个子fragment的情况", "case5"),
         HomeItem("在宿主activity中接收结果", "case6"),

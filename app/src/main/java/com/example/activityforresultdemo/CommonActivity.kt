@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.activityforresultdemo.databinding.ActivityCommonBinding
 import com.example.activityforresultdemo.fragment.*
+import org.jetbrains.annotations.TestOnly
 
 class CommonActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCommonBinding
@@ -43,6 +44,11 @@ class CommonActivity : AppCompatActivity() {
             .beginTransaction()
             .add(R.id.fragment_container, fragment)
             .commit()
+    }
+
+    @TestOnly
+    fun changeTvTextForUITest(text: String) {
+        binding.tvNameTest.text = text
     }
 
     private fun showToast(text: String) {
