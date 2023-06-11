@@ -16,14 +16,17 @@ class FragmentResultApiLifecycFragment : Fragment() {
     private var childFragment: Fragment? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+//        JJACK10 看log去验证
         Log.e("JACK", "FragmentResultApiLifecycFragment-oncreate ", )
 
+//        JJACK11
         // 重复接收到多个结果只会接收到最新的
         setFragmentResultListener("request:repeat send") { requestKey, bundle ->
             val num =  bundle.getInt("result:repeat send")
             Log.e("JACK", "repeat send result: $num", )
         }
 
+//        JJACK12
         // close fragment
         setFragmentResultListener("requestKeycase7_2") { requestKey, bundle ->
             Log.e("JACK", "setFragmentresult  : close fragment", )

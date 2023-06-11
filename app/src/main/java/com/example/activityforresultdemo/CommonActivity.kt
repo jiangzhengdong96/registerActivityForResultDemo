@@ -30,7 +30,7 @@ class CommonActivity : AppCompatActivity() {
                 }
             } ?: addFragment(NewActivityResultApiBasicFragment())
         }
-
+        //
         //在宿主activity中接收结果
         supportFragmentManager.setFragmentResultListener("request:activity", this) { _, _ ->
             showToast("receive result at host activity:close common activity!")

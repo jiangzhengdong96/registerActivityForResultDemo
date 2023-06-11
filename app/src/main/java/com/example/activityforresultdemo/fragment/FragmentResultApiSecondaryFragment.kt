@@ -46,14 +46,18 @@ class FragmentResultApiSecondaryFragment : Fragment() {
                     //基本用法JJACK06
                     setFragmentResult("key:basic", bundleOf("resultKey:basic" to "result to basic page"))
                     showToast("set fragment result to basic successful!")
+                }
 
+                "equalLevel"-> {
                     //相同层级的fragment可以用parentFragmentManager/supportFragmentManager
 //                    setFragmentResult("key:equalLevel", bundleOf("resultKey:equalLevel" to "result to equal level"))
 
-                 requireActivity().supportFragmentManager.setFragmentResult("key:equalLevel", bundleOf("resultKey:equalLevel" to "result to equal level"))
-                 Log.i("JACK", "equalLevel：supportFragmentManager: ${requireActivity().supportFragmentManager}/${requireActivity().supportFragmentManager.fragments}")
-                 Log.i("JACK", "equalLevel：parentFragmentManager: ${parentFragmentManager}/${parentFragmentManager.fragments}")
+                    requireActivity().supportFragmentManager.setFragmentResult("key:equalLevel", bundleOf("resultKey:equalLevel" to "result to equal level"))
+                    Log.i("JACK", "equalLevel：supportFragmentManager: ${requireActivity().supportFragmentManager}/${requireActivity().supportFragmentManager.fragments}")
+                    Log.i("JACK", "equalLevel：parentFragmentManager: ${parentFragmentManager}/${parentFragmentManager.fragments}")
+                    showToast("set fragment result to equalLevel successful!")
                 }
+
                 "contain" -> {
                     //1、接收方使用childFragmentManager， 发送方使用parentFragmentManager
                     setFragmentResult("request:containLevel", bundleOf("result:containLevel" to "result to contain level"))

@@ -19,25 +19,27 @@ class FragmentResultApiBasicFragment : Fragment() {
         setFragmentResultListener("key:basic") { _, bundle ->
             bundle.getString("resultKey:basic")?.let {
                 binding.tvTextTest.text = it
+                Log.i("JACK", "basic：backResult: $it")
             }
         }
 
+//        JJACK07
 //        相同层级的fragment可以用parentFragmentManager/supportFragmentManager
-//        setFragmentResultListener("key:equalLevel") { requestKey, bundle ->
-//            bundle.getString("resultKey:equalLevel")?.let {
-//                binding.tvText.text = it
-//                Log.i("JACK", "equalLevel：backResult: $it")
-//            }
-//        }
+        setFragmentResultListener("key:equalLevel") { requestKey, bundle ->
+            bundle.getString("resultKey:equalLevel")?.let {
+                binding.tvTextTest.text = it
+                Log.i("JACK", "equalLevel：backResult: $it")
+            }
+        }
 //        requireActivity().supportFragmentManager.setFragmentResultListener("key:equalLevel", this) { requestKey, bundle ->
 //            bundle.getString("resultKey:equalLevel")?.let {
-//                binding.tvText.text = it
+//                binding.tvTextTest.text = it
 //                Log.i("JACK", "equalLevel：backResult: $it")
 //            }
 //        }
 
-        Log.i("JACK", "equalLevel：supportFragmentManager: ${requireActivity().supportFragmentManager}/${requireActivity().supportFragmentManager.fragments}")
-        Log.i("JACK", "equalLevel：parentFragmentManager: ${parentFragmentManager}/${parentFragmentManager.fragments}")
+//        Log.i("JACK", "equalLevel：supportFragmentManager: ${requireActivity().supportFragmentManager}/${requireActivity().supportFragmentManager.fragments}")
+//        Log.i("JACK", "equalLevel：parentFragmentManager: ${parentFragmentManager}/${parentFragmentManager.fragments}")
     }
 
     override fun onCreateView(
@@ -52,7 +54,11 @@ class FragmentResultApiBasicFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnNavigate.setOnClickListener {
+            //基本用法JJACK06
             replaceFragment(FragmentResultApiSecondaryFragment.newInstance("basic"))
+
+//            JJACK07
+//            replaceFragment(FragmentResultApiSecondaryFragment.newInstance("equalLevel"))
         }
     }
 

@@ -39,10 +39,10 @@ fun Fragment.launchActivityForResult(
     options: ActivityOptionsCompat? = null,
     callback: ActivityResultCallback<ActivityResult>
 ) {
-    val holder = ActivityResultEncapsulatedFragment()
-    holder.attach(intent, options, callback)
+    val fragment = ActivityResultEncapsulatedFragment()
+    fragment.attach(intent, options, callback)
     activity?.supportFragmentManager?.beginTransaction()
-        ?.add(holder, TAG)
+        ?.add(fragment, TAG)
         ?.commitAllowingStateLoss()
 }
 

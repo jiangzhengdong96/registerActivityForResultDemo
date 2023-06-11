@@ -22,15 +22,15 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4ClassRunner::class)
 class RegisterActivityForResultTest {
 
-    private val TEST_RESULT= "callback result for: "
-    private val RESULT_OK = Activity.RESULT_OK
+    companion object {
+        private const val TEST_RESULT= "callback result for: "
+    }
 
     @get:Rule
     val activityRule: ActivityScenarioRule<CommonActivity> = ActivityScenarioRule(CommonActivity::class.java)
 
     @Test
     fun registerForActivityResultTest() {
-        // 启动MainActivity
         activityRule.scenario.moveToState(Lifecycle.State.CREATED)
         activityRule.scenario.onActivity { activity: CommonActivity ->
             val launcher = activity.registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->

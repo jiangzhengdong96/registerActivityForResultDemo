@@ -54,13 +54,6 @@ class NewActivityResultApiBasicFragment : Fragment() {
     //限制条件：registerForActivityResult()的调用范围
     private lateinit var getLimitLauncherA: ActivityResultLauncher<String>
 
-//    launch()的调用范围
-    private val getLimitLauncherB: ActivityResultLauncher<String> =
-        registerForActivityResult(ActivityResultContracts.GetContent()) {
-            binding.tvScopeB.text = it?.toString()
-            Log.i("JACK","LimitResultB: $it")
-        }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -110,11 +103,6 @@ class NewActivityResultApiBasicFragment : Fragment() {
             //registerForActivityResult()的调用范围
             btnScopeA.setOnClickListener {
                 getLimitLauncherA.launch("image/*")
-            }
-
-            //launch()的调用范围
-            btnScopeB.setOnClickListener {
-                getLimitLauncherB.launch("image/*")
             }
         }
     }

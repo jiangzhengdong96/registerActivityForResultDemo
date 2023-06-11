@@ -3,6 +3,7 @@
     <androidx.appcompat.widget.LinearLayoutCompat  xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
+        android:background="@color/teal_200"
         android:orientation="vertical">
 
         <TextView
@@ -25,6 +26,8 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginHorizontal="10dp"
+            android:background="@color/white"
             android:id="@+id/fl_child"/>
 
 

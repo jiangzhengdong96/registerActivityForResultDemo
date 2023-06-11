@@ -15,6 +15,7 @@ class ChildrenContainerFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+//        JJACK08
         //Fragment中包含另一个fragment的之间进行数据传输
         //1、接收方使用childFragmentManager， 发送方使用parentFragmentManager
         childFragmentManager.setFragmentResultListener("request:containLevel",this) { requestKey, bundle ->
